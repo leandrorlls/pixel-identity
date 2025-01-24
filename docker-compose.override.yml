@@ -81,6 +81,8 @@ services:
       - '3306:3306'
     expose:
         - '3306'
+    profiles:
+      - mysql
     networks:
       - pixel-network
 
