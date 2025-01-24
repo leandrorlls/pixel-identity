@@ -21,6 +21,7 @@ COPY ["src/Pixel.Identity.Store.Sql.Shared/Pixel.Identity.Store.Sql.Shared.cspro
 COPY ["src/Pixel.Identity.Store.SqlServer/Pixel.Identity.Store.SqlServer.csproj", "src/Pixel.Identity.Store.SqlServer/"]
 COPY ["src/Pixel.Identity.Store.PostgreSQL/Pixel.Identity.Store.PostgreSQL.csproj", "src/Pixel.Identity.Store.PostgreSQL/"]
 COPY ["src/Pixel.Identity.Store.Mongo/Pixel.Identity.Store.Mongo.csproj", "src/Pixel.Identity.Store.Mongo/"]
+COPY ["src/Pixel.Identity.Store.MySQL/Pixel.Identity.Store.MySQL.csproj", "src/Pixel.Identity.Store.MySQL/"]
 
 RUN dotnet restore "src/Pixel.Identity.Messenger.Email/Pixel.Identity.Messenger.Email.csproj"
 RUN dotnet restore "src/Pixel.Identity.Messenger.Console/Pixel.Identity.Messenger.Console.csproj"
@@ -28,6 +29,7 @@ RUN dotnet restore "src/Pixel.Identity.Provider/Pixel.Identity.Provider.csproj"
 RUN dotnet restore "src/Pixel.Identity.Store.Mongo/Pixel.Identity.Store.Mongo.csproj"
 RUN dotnet restore "src/Pixel.Identity.Store.SqlServer/Pixel.Identity.Store.SqlServer.csproj"
 RUN dotnet restore "src/Pixel.Identity.Store.PostgreSQL/Pixel.Identity.Store.PostgreSQL.csproj"
+RUN dotnet restore "src/Pixel.Identity.Store.MySQL/Pixel.Identity.Store.MySQL.csproj"
 
 COPY . .
 WORKDIR "/src/src/Pixel.Identity.Provider"

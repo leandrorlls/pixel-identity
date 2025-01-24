@@ -9,7 +9,7 @@ using static OpenIddict.Abstractions.OpenIddictConstants;
 namespace Pixel.Identity.Store.SqlServer;
 
 /// <summary>
-/// Configure Pixel Identity to use the MongoDb backend for asp.net identity and OpenIddict
+/// Configure Pixel Identity to use the SqlServer backend for asp.net identity and OpenIddict
 /// </summary>
 public class SqlConfigurator : IDataStoreConfigurator
 {

@@ -6,10 +6,10 @@ using Pixel.Identity.Core.Conventions;
 using Pixel.Identity.Store.Sql.Shared;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
-namespace Pixel.Identity.Store.PostgreSQL;
+namespace Pixel.Identity.Store.MySQL;
 
 /// <summary>
-/// Configure Pixel Identity to use the PostgreSQL backend for asp.net identity and OpenIddict
+/// Configure Pixel Identity to use the MySQL backend for asp.net identity and OpenIddict
 /// </summary>
 public class SqlConfigurator : IDataStoreConfigurator
 {
@@ -37,8 +37,10 @@ public class SqlConfigurator : IDataStoreConfigurator
 
         return services.AddDbContext<ApplicationDbContext>(options =>
         {
-            options.UseNpgsql(configuration.GetConnectionString("PostgreServerConnection"), 
-                x => x.MigrationsAssembly("Pixel.Identity.Store.PostgreSQL"));
+            options.UseMySql(
+                configuration.GetConnectionString("MysqlServerConnection"),
+                new MySqlServerVersion(new Version(8, 0)),
+                x => x.MigrationsAssembly("Pixel.Identity.Store.MySQL"));
 
             // Register the entity sets needed by OpenIddict.
             // Note: use the generic overload if you need
@@ -93,12 +95,12 @@ public class SqlConfigurator : IDataStoreConfigurator
     public void AddServices(IServiceCollection services)
     {
         services.AddControllersWithViews()
-              .AddApplicationPart(typeof(ApplicationUser).Assembly)
-              .AddApplicationPart(typeof(SqlConfigurator).Assembly)
-              .AddRazorPagesOptions(options =>
-              {
-                  options.Conventions.Add(new IdentityPageModelConvention<ApplicationUser, Guid>());
-              }); ;
+            .AddApplicationPart(typeof(ApplicationUser).Assembly)
+            .AddApplicationPart(typeof(SqlConfigurator).Assembly)
+            .AddRazorPagesOptions(options =>
+            {
+                options.Conventions.Add(new IdentityPageModelConvention<ApplicationUser, Guid>());
+            }); ;                
         services.AddHostedService<Worker>();
     }
 }

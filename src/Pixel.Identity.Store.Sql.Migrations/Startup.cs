@@ -30,6 +30,10 @@ public class Startup
                     string postgreConnectionString = Configuration.GetConnectionString("PostgreServerConnection") ?? throw new ArgumentNullException(nameof(postgreConnectionString), "Postgres connection string is not configured");
                     options.UseNpgsql(postgreConnectionString, b => b.MigrationsAssembly("Pixel.Identity.Store.PostgreSQL"));
                     break;
+                case "MySql":
+                    string mysqlConnectionString = Configuration.GetConnectionString("MysqlServerConnection") ?? throw new ArgumentNullException(nameof(mysqlConnectionString), "Mysql connection string is not configured");
+                    options.UseMySql(mysqlConnectionString, new MySqlServerVersion(new Version(8, 0)), b => b.MigrationsAssembly("Pixel.Identity.Store.MySQL"));
+                    break;
             };               
             options.UseOpenIddict();
         })

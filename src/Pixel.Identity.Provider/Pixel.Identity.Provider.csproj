@@ -33,6 +33,7 @@
   <Target Name="BuildPlugins" AfterTargets="Build">
     <ItemGroup>
       <DbStorePluginProject Include="..\Pixel.Identity.Store.Mongo\Pixel.Identity.Store.Mongo.csproj" />
+      <DbStorePluginProject Include="..\Pixel.Identity.Store.MySQL\Pixel.Identity.Store.MySQL.csproj" />
       <DbStorePluginProject Include="..\Pixel.Identity.Store.SqlServer\Pixel.Identity.Store.SqlServer.csproj" />
       <DbStorePluginProject Include="..\Pixel.Identity.Store.PostgreSQL\Pixel.Identity.Store.PostgreSQL.csproj" />
     </ItemGroup>

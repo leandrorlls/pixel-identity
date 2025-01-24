@@ -18,7 +18,11 @@ jobs:
   
   test-with-postgres-db:
     needs: build-docker-image
-    uses: ./.github/workflows/identity-test-docker-image-with-postgres.yaml           
+    uses: ./.github/workflows/identity-test-docker-image-with-postgres.yaml
+    
+  test-with-mysql-db:
+    needs: build-docker-image
+    uses: ./.github/workflows/identity-test-docker-image-with-mysql.yaml
 
   test-with-mongo-db:
    needs: build-docker-image

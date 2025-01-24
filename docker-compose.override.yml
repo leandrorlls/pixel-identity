@@ -68,6 +68,21 @@ services:
       - mongo
     networks:
       - pixel-network
+        
+  mysql:
+    image: mysql:latest
+    container_name: pixel_identity_mysql
+    restart: always
+    volumes:
+      - mysql-pixel-identiy-store:/var/lib/mysql/data
+    environment:
+      - MYSQL_ROOT_PASSWORD=Abc123
+    ports:
+      - '3306:3306'
+    expose:
+        - '3306'
+    networks:
+      - pixel-network
 
   postgres:
     image: postgres:14.1-alpine
