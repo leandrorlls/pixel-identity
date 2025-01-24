@@ -14,7 +14,7 @@ jobs:
      mysql:
         image: mysql:latest
         env:
-          MYSQL_ROOT_PASSWORD: mysqlrootpass
+          MYSQL_ROOT_PASSWORD: Abc123
           
    steps:  
      - name: Checkout Repository
